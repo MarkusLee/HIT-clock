@@ -26,7 +26,7 @@ for i in range (0, 5):
 		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/index')
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
-		driver.execute_script('document.getElementById("kzl30-2").checked = true')
+		driver.execute_script('document.getElementById("kzl32-0").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
 		driver.execute_script('document.getElementById("txfscheckbox1").click()')
 		driver.find_element_by_class_name('submit').click()
