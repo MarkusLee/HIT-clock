@@ -44,4 +44,4 @@ driver.quit()
 if success:
 	print('上报完成')
 else:
-	raise Exception('上报多次失败，可能学工系统已新')
+	raise Exception('上报多次失败，可能学工系统已更新')
