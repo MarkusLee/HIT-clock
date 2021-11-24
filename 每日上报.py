@@ -30,7 +30,7 @@ for i in range (0, 5):
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-0").checked = true')
-        driver.execute_script('document.getElementById("kzl41-0").checked = true')
+		driver.execute_script('document.getElementById("kzl41-0").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
 		try:
 			# 如果有多的按钮，按，没多的按钮就算了
