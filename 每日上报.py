@@ -5,9 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 
 print('初始化浏览器')
-USERNAME   = os.environ['19B905030']
-PASSWORD   = os.environ['15849447750jxzs']
-LOCATION   = os.environ['黑龙江省哈尔滨市南岗区']
+USERNAME   = '19B905030'
+PASSWORD   = '15849447750jxzs'
+LOCATION   = '黑龙江省哈尔滨市南岗区'
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
