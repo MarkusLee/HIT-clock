@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
 import os
 import traceback
 from time import sleep
@@ -8,9 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 
 print('初始化浏览器')
-USERNAME   = ['19B905030']
-PASSWORD   = ['15849447750jxzs']
-LOCATION   = ['黑龙江省哈尔滨市南岗区']
+USERNAME   = os.environ['19B905030']
+PASSWORD   = os.environ['15849447750jxzs']
+LOCATION   = os.environ['黑龙江省哈尔滨市南岗区']
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
@@ -23,19 +20,24 @@ driver.get('https://ids.hit.edu.cn/authserver/')
 driver.find_element_by_id('mobileUsername').send_keys(USERNAME)
 driver.find_element_by_id('mobilePassword').send_keys(PASSWORD)
 driver.find_element_by_id('load').click()
-driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
-s = 'kzl10 = '
+driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
 success = False
 for i in range (0, 5):
 	try:
-		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/shsj/loginChange')
-		driver.execute_script(f'kzl10 = "{LOCATION}"') 
+		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
+		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-0").checked = true')
-		driver.execute_script('document.getElementById("kzl41-0").checked = true')
+        driver.execute_script('document.getElementById("kzl41-0").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
+		try:
+			# 如果有多的按钮，按，没多的按钮就算了
+			driver.execute_script('document.getElementById("txfscheckbox1").click()')
+			driver.execute_script('document.getElementById("txfscheckbox2").click()')
+		except:
+			pass
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
