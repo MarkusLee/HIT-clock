@@ -23,6 +23,15 @@ driver.find_element_by_id('load').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+
+def tryClick(id):
+	try:
+		driver.execute_script(f'doucument.getElementById("{id}").click()')
+	except:
+		print(f'No such checkbox:{id}')
+		pass
+
+
 success = False
 for i in range (0, 5):
 	try:
