@@ -5,9 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 
 print('初始化浏览器')
-USERNAME   = '19B905030'
-PASSWORD   = '15849447750jxzs'
-LOCATION   = '黑龙江省哈尔滨市南岗区'
+USERNAME   = os.environ['ID']
+PASSWORD   = os.environ['PASSWORD']
+LOCATION   = os.environ['LOCATION']
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
@@ -23,14 +23,12 @@ driver.find_element_by_id('login_submit').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
-
 def tryClick(id):
 	try:
-		driver.execute_script(f'doucument.getElementById("{id}").click()')
+		driver.execute_script(f'document.getElementById("{id}").click()')
 	except:
-		print(f'No such checkbox:{id}')
+		print(f'No such checkbox: {id}')
 		pass
-
 
 success = False
 for i in range (0, 5):
